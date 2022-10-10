@@ -19,7 +19,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @Api(tags = "Gestion des fournisseurss")
-@RequestMapping("/fournisseurrr")
+@RequestMapping("/fournisseurrddr")
 public class FournisseurRestController {
 
 	@Autowired
