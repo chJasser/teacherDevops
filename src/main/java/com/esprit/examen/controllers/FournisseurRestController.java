@@ -19,7 +19,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @Api(tags = "Gestion des fournisseurss")
-@RequestMapping("/fournisseur")
+@RequestMapping("/fournisseurrr")
 public class FournisseurRestController {
 
 	@Autowired
@@ -30,6 +30,7 @@ public class FournisseurRestController {
 	@ResponseBody
 	public List<Fournisseur> getFournisseurs() {
 		List<Fournisseur> fournisseurs = fournisseurService.retrieveAllFournisseurs();
+		
 		 return fournisseurs;
 	} 
 	// http://localhost:8089/SpringMVC/fournisseur/retrieve-fournisseur/8 
