@@ -31,8 +31,7 @@ public class FournisseurRestController {
 	public List<Fournisseur> getFournisseurs() {
 		List<Fournisseur> fournisseurs = fournisseurService.retrieveAllFournisseurs();
 		 return fournisseurs;
-	}
-
+	} 
 	// http://localhost:8089/SpringMVC/fournisseur/retrieve-fournisseur/8 
 	@GetMapping("/retrieve-fournisseur/{fournisseur-id}")
 	@ResponseBody
