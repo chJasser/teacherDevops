@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'clone'
+                echo 'clonee'
        
                 // Get some code from a GitHub repository
                 url 'https://github.com/chJasser/teacherDevops.git'
