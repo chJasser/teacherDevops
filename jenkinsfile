@@ -17,16 +17,10 @@ pipeline {
             }
 
         }
-           stage('build') {
-            steps {
-                echo 'build'
-         
-               mvn test
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+       stage('Build') { 
+            steps { 
+               echo 'This is a minimal pipeline.' 
             }
-
         }
     }
 }
