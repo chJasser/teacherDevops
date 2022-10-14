@@ -2,7 +2,17 @@ pipeline {
     agent any
 
     stages {
-   stage('stage 2') {
+        stage('git colne') {
+            steps {
+                echo 'git clone main';
+                    git branch: 'main',
+                    url: 'git@github.com:chJasser/teacherDevops.git',
+                    credentialsId: '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';
+
+            }
+
+        }
+           stage('stage 2') {
             steps {
                 echo 'stage 2'
 
