@@ -12,23 +12,35 @@ pipeline {
             }
 
         }
-           stage('stage 2') {
+           stage('clean') {
             steps {
-                echo 'staged '
+                sh 'mvn clean'
+            }
+        }
+           stage('build') {
+            steps {
+                sh 'mvn build'
+            }
+        }
+        
+    
+           stage('test') {
+            steps {
+            sh 'mvn test'
 
             }
 
         }
-           stage('stage 3') {
+            stage('install') {
             steps {
-                echo 'staddge 3'
+            sh 'mvn install'
 
             }
 
         }
-             stage('stage 4') {
+              stage('run as spring boot') {
             steps {
-                echo 'stag s4'
+            sh 'mvn spring-boot:run'
 
             }
 
