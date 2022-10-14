@@ -14,11 +14,13 @@ pipeline {
         }
            stage('clean') {
             steps {
+            
                 sh 'mvn clean'
             }
         }
            stage('build') {
             steps {
+            
                 sh 'mvn build'
             }
         }
@@ -26,6 +28,7 @@ pipeline {
     
            stage('test') {
             steps {
+            
             sh 'mvn test'
 
             }
@@ -33,6 +36,7 @@ pipeline {
         }
             stage('install') {
             steps {
+            
             sh 'mvn install'
 
             }
@@ -40,6 +44,7 @@ pipeline {
         }
               stage('run as spring boot') {
             steps {
+            
             sh 'mvn spring-boot:run'
 
             }
