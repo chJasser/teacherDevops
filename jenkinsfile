@@ -10,9 +10,9 @@ pipeline {
             }
 
         }
-           stage('stage 3') {
+           stage('staege 3') {
             steps {
-                echo 'stage 3'
+                echo 'stdadazage 3'
 
             }
 
