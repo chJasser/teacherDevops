@@ -2,7 +2,16 @@ pipeline {
     agent any
 
     stages {
-      
+        stage('git colne') {
+            steps {
+                echo 'git clone main';
+                    git branch: 'main',
+                    url: 'https://github.com/chJasser/teacherDevops.git',
+                    credentialsId: 'c9c32571-8aff-42d6-b416-215d5c01f15f';
+
+            }
+
+        }
            stage('stage 2') {
             steps {
                 echo 'stage 2'
@@ -10,9 +19,9 @@ pipeline {
             }
 
         }
-           stage('staege 3') {
+           stage('stage 3') {
             steps {
-                echo 'stdadazage 3'
+                echo 'stage 3'
 
             }
 
