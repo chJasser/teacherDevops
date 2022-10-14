@@ -12,27 +12,21 @@ pipeline {
             }
 
         }
-           stage('clean') {
-            steps {
-            
-                sh 'mvn clean'
-            }
-        }
+       
            stage('compile') {
             steps {
             
                 sh 'mvn compile'
             }
         }
+        
             stage('build') {
             steps {
             
                 sh 'mvn -B -DskipTest clean package'
             }
         }
-        
-    
-           stage('test') {
+              stage('test') {
             steps {
             
             sh 'mvn test'
@@ -40,26 +34,34 @@ pipeline {
             }
 
         }
-          stage('package') {
-            steps {
-                sh 'mvn package'
-            }
-        }
+        
+  
             stage('install') {
             steps {
             
-            sh 'mvn install -DskipTest'
+            sh 'mvn  -DskipTest clean install '
 
             }
 
         }
-              stage('run as spring boot') {
-            steps {
-            
-           	 sh 'mvn spring-boot:run'
-
-            }
-
-        }
+       
     }
+     post {  
+         always {  
+             echo 'This will always run'  
+         }  
+         success {  
+             echo 'This will run only if successful'  
+         }  
+         failure {  
+         echo 'failure'
+         }  
+         unstable {  
+             echo 'This will run only if the run was marked as unstable'  
+         }  
+         changed {  
+             echo 'This will run only if the state of the Pipeline has changed'  
+             echo 'For example, if the Pipeline was previously failing but is now successful'  
+         }  
+     }  
 }
