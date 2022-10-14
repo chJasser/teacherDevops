@@ -2,29 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Chekout git') {
+   stage('stage 2') {
             steps {
-                echo 'push'
-                branch : 'main'
-                // Get some code from a GitHub repository
-                url 'https://github.com/chJasser/teacherDevops.git'
-                credentialsId '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'
-                // Run Maven on a Unix agent.
-             
+                echo 'stage 2'
 
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
         }
-           stage('build') {
+           stage('stage 3') {
             steps {
-                echo 'build ddazdazazdazdzadazdacqs'
-         
-              
+                echo 'stage 3'
 
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
         }
