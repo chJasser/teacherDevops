@@ -18,10 +18,16 @@ pipeline {
                 sh 'mvn clean'
             }
         }
-           stage('build') {
+           stage('compile') {
             steps {
             
-                sh 'mvn build'
+                sh 'mvn compile'
+            }
+        }
+            stage('build') {
+            steps {
+            
+                sh 'mvn -B -DskipTest clean package'
             }
         }
         
@@ -34,10 +40,15 @@ pipeline {
             }
 
         }
+          stage('package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
             stage('install') {
             steps {
             
-            sh 'mvn install'
+            sh 'mvn install -DskipTest'
 
             }
 
@@ -45,7 +56,7 @@ pipeline {
               stage('run as spring boot') {
             steps {
             
-            sh 'mvn spring-boot:run'
+           	 sh 'mvn spring-boot:run'
 
             }
 
