@@ -2,17 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('git colne') {
-            steps {
-                echo 'git clone main';
-                    git branch: 'main',
-                    url: 'https://github.com/chJasser/teacherDevops.git',
-                    credentialsId: 'c9c32571-8aff-42d6-b416-215d5c01f15f';
-
-            }
-
-        }
-       
+  
            stage('compile') {
             steps {
             
@@ -26,14 +16,14 @@ pipeline {
                 sh 'mvn -Dmaven.test.skip=true clean package'
             }
         }
-              stage('test') {
-            steps {
-            
-            sh 'mvn test'
-
-            }
-
-        }
+//              stage('test') {
+//            steps {
+//            
+//            sh 'mvn test'
+//
+//            }
+//
+//        }
         
   
             stage('install') {
@@ -44,6 +34,13 @@ pipeline {
             }
 
         }
+        stage('Building our image') {
+		steps{
+		script {
+			dockerImage = docker.build registry + ":$BUILD_NUMBER"
+				}
+			}
+		}	
        
     }
      post {  
