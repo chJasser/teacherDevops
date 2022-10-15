@@ -26,14 +26,14 @@ pipeline {
 //        }
         
   
-            stage('install') {
-            steps {
-            
-            sh 'mvn  -DskipTest clean install '
-
-            }
-
-        }
+//            stage('install') {
+//            steps {
+//            
+//            sh 'mvn  -DskipTest clean install '
+//
+//            }
+//
+//        }
         stage('Building our image') {
 		steps{
 		script {
