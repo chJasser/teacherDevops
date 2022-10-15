@@ -56,7 +56,7 @@ pipeline {
              echo 'This will run only if successful.'  
          }  
          failure {  
-           emailext attachLog: true, body: '', subject: '', to: 'cjasser40@gmail.com'
+        //   emailext attachLog: true, body: '', subject: '', to: 'cjasser40@gmail.com'
            mail bcc: '', body: 'assazsaz', cc: 'cjasser580@gmail.com', from: '', replyTo: '', subject: 'ssaz', to: 'cjasser4O@gmail.com'
          }  
          unstable {  
