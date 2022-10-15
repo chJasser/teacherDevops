@@ -58,8 +58,8 @@ pipeline {
          failure {  
            echo 'This will run in failure'  
         
-        //   emailext attachLog: true, body: '', subject: '', to: 'cjasser40@gmail.com'
-           mail bcc: '', body: 'assazsaz', cc: 'cjasser580@gmail.com', from: '', replyTo: '', subject: 'ssaz', to: 'cjasser4O@gmail.com'
+           emailext attachLog: true, body: '', subject: '', to: 'cjasser40@gmail.com'
+         //  mail bcc: '', body: 'assazsaz', cc: 'cjasser580@gmail.com', from: '', replyTo: '', subject: 'ssaz', to: 'cjasser4O@gmail.com'
          }  
          unstable {  
              echo 'This will run only if the run was marked as unstable'  
