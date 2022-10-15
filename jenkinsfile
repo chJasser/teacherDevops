@@ -20,13 +20,13 @@ pipeline {
             }
         }
         
-            stage('build') {
+            stage('buildd') {
             steps {
             
                 sh 'mvn -Dmaven.test.skip=true clean package'
             }
         }
-              stage('tests') {
+              stage('test') {
             steps {
             
             sh 'mvn test'
