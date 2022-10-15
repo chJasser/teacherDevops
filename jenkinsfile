@@ -23,7 +23,7 @@ pipeline {
             stage('build') {
             steps {
             
-                sh 'mvn -B -DskipTest clean package'
+                sh 'mvn -Dmaven.test.skip=true clean package'
             }
         }
               stage('test') {
@@ -56,6 +56,8 @@ pipeline {
              echo 'This will run only if successful.'  
          }  
          failure {  
+           echo 'This will run in failure'  
+        
         //   emailext attachLog: true, body: '', subject: '', to: 'cjasser40@gmail.com'
            mail bcc: '', body: 'assazsaz', cc: 'cjasser580@gmail.com', from: '', replyTo: '', subject: 'ssaz', to: 'cjasser4O@gmail.com'
          }  
