@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-/*
         stage('compile') {
             steps {
                 echo 'complie'
@@ -15,7 +14,8 @@ pipeline {
                 echo "build project"
                 sh 'mvn -Dmaven.test.skip=true clean package'
             }
-        }*/
+        }
+
 /*        stage('test') {
             steps {
                 echo "Tests"
@@ -35,21 +35,20 @@ pipeline {
 
         }*/
 
- /*       stage('Dokcer build image') {
+        stage('Dokcer build image') {
             steps {
                 script {
-                    sh 'docker build -t chaieb/tpachatprojecttest-1.0 -f Dockerfile .'
-
-                    //dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    sh 'docker build -t tpachatprojecttest -f Dockerfile .'
                 }
             }
-        }*/
+        }
         stage('Dokcer push') {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                         sh 'docker login -u chjasser -p ${dockerhubpwd}'
-                        sh 'docker push chjasser/tpachatprojecttest-1.0'
+                        sh 'docker tag  tpachatprojecttest chjasser/tpachatprojecttest:1.0'
+                        sh 'docker push chjasser/tpachatprojecttest/1.0'
                     }
 
                 }
@@ -58,7 +57,7 @@ pipeline {
 
 
     }
-/*    post {
+    post {
 
         failure {
             emailext to: "cjasser40@gmail.com",
@@ -67,5 +66,5 @@ pipeline {
                     attachLog: true
         }
 
-    }*/
+    }
 }
