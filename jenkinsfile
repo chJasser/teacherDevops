@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-
+/*
         stage('compile') {
             steps {
                 echo 'complie'
@@ -15,7 +15,7 @@ pipeline {
                 echo "build project"
                 sh 'mvn -Dmaven.test.skip=true clean package'
             }
-        }
+        }*/
 /*        stage('test') {
             steps {
                 echo "Tests"
@@ -47,11 +47,10 @@ pipeline {
         stage('Dokcer push') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                        sh 'docker login -u chJasser -p ${dockerhubpwd}'
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                        sh 'docker login -u chjasser -p ${dockerhubpwd}'
                         sh 'docker push chaieb/tpachatprojecttest-1.0 '
                     }
-
 
                 }
             }
@@ -59,7 +58,7 @@ pipeline {
 
 
     }
-    post {
+/*    post {
 
         failure {
             emailext to: "cjasser40@gmail.com",
@@ -68,5 +67,5 @@ pipeline {
                     attachLog: true
         }
 
-    }
+    }*/
 }
