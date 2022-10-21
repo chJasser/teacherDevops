@@ -49,7 +49,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                         sh 'docker login -u chjasser -p ${dockerhubpwd}'
-                        sh 'docker push chaieb/tpachatprojecttest-1.0'
+                        sh 'docker push chjasser/tpachatprojecttest-1.0'
                     }
 
                 }
