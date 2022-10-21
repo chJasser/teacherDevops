@@ -35,7 +35,7 @@ pipeline {
 
         }*/
 
-        stage('Dokcer build image') {
+/*        stage('Dokcer build image') {
             steps {
                 script {
                     echo "Dokcer build image"
@@ -56,9 +56,9 @@ pipeline {
 
                 }
             }
-        }
+        }*/
 
-/*        stage('Dokcer pull') {
+        stage('Dokcer pull') {
             steps {
                 script {
                     echo "Dokcer pull"
@@ -76,7 +76,7 @@ pipeline {
             steps{
                 sh "docker rmi chjasser/tpachatprojecttest:1.0"
             }
-        }*/
+        }
 
 
     }
