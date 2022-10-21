@@ -38,6 +38,7 @@ pipeline {
         stage('Dokcer build image') {
             steps {
                 script {
+                    echo "Dokcer build image"
                     sh 'docker build -t tpachatprojecttest -f Dockerfile .'
                 }
             }
@@ -45,15 +46,37 @@ pipeline {
         stage('Dokcer push') {
             steps {
                 script {
+                    echo "Dokcer push"
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                         sh 'docker login -u chjasser -p ${dockerhubpwd}'
                         sh 'docker tag  tpachatprojecttest chjasser/tpachatprojecttest:1.0'
                         sh 'docker push chjasser/tpachatprojecttest:1.0'
+                        sh 'docker logout'
                     }
 
                 }
             }
         }
+
+/*        stage('Dokcer pull') {
+            steps {
+                script {
+                    echo "Dokcer pull"
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                        sh 'docker login -u chjasser -p ${dockerhubpwd}'
+                        sh 'docker pull chjasser/tpachatprojecttest:1.0'
+                        sh 'docker logout'
+                    }
+
+                }
+            }
+        }
+
+        stage('Dokcer Cleaning up') {
+            steps{
+                sh "docker rmi chjasser/tpachatprojecttest:1.0"
+            }
+        }*/
 
 
     }
