@@ -5,36 +5,37 @@ pipeline {
 
         stage('compile') {
             steps {
-
+                echo 'complie'
                 sh 'mvn compile'
             }
         }
 
-        stage('buildd') {
+        stage('mvn build') {
             steps {
-
-                sh 'mvn -Dmaven.test.skip=true clean package '
+                echo "build project"
+                sh 'mvn -Dmaven.test.skip=true clean package'
             }
         }
-//              stage('test') {
-//            steps {
-//            
-//            sh 'mvn test'
-//
-//            }
-//
-//        }
+/*        stage('test') {
+            steps {
+                echo "Tests"
+                sh 'mvn test'
+
+            }
+
+        }
 
 
-//            stage('install') {
-//            steps {
-//            
-//            sh 'mvn  -DskipTest clean install '
-//
-//            }
-//
-//        }
-        stage('Dokcer build') {
+        stage('install') {
+            steps {
+                echo 'install
+                sh 'mvn  -DskipTest clean install '
+
+            }
+
+        }*/
+
+ /*       stage('Dokcer build image') {
             steps {
                 script {
                     sh 'docker build -t chaieb/tpachatprojecttest-1.0 -f Dockerfile .'
@@ -42,19 +43,19 @@ pipeline {
                     //dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
-        }
-            stage('Dokcer push') {
-                steps {
-                    script {
-                        withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                            sh 'docker login -u chJasser -p ${dockerhubpwd}'
-                            sh 'docker push chaieb/tpachatprojecttest-1.0 '
-                        }
-
-
+        }*/
+        stage('Dokcer push') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                        sh 'docker login -u chJasser -p ${dockerhubpwd}'
+                        sh 'docker push chaieb/tpachatprojecttest-1.0 '
                     }
+
+
                 }
             }
+        }
 
 
     }
