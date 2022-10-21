@@ -13,7 +13,7 @@ pipeline {
             stage('buildd') {
             steps {
             
-                sh 'mvn -Dmaven.test.skip=true clean package'
+                sh 'mvn clean package -DskipTest'
             }
         }
 //              stage('test') {
@@ -34,10 +34,11 @@ pipeline {
 //            }
 //
 //        }
-        stage('Building our image') {
+        stage('Dokcer build') {
 		steps{
 		script {
-			dockerImage = docker.build registry + ":$BUILD_NUMBER"
+		sh 'docker build -t chaieb/tpAchatProjectTest-1.0 -f Dockerfile .'
+// 			dockerImage = docker.build registry + ":$BUILD_NUMBER"
 				}
 			}
 		}	
