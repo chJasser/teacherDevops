@@ -12,7 +12,7 @@ pipeline {
         stage('mvn build') {
             steps {
                 echo "build project"
-                sh 'mvn clean package'
+                sh 'mvn -Dmaven.test.skip=true clean package'
             }
         }
 
