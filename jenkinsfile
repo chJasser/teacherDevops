@@ -12,7 +12,7 @@ pipeline {
         stage('mvn build') {
             steps {
                 echo "build project"
-                sh 'mvn -Dmaven.test.skip=true clean package'
+                sh 'mvn clean package'
             }
         }
 
@@ -35,7 +35,7 @@ pipeline {
 
         }*/
 
-/*        stage('Dokcer build image') {
+        stage('Dokcer build image') {
             steps {
                 script {
                     echo "Dokcer build image"
@@ -56,7 +56,7 @@ pipeline {
 
                 }
             }
-        }*/
+        }
 
         stage('Dokcer pull') {
             steps {
@@ -81,12 +81,13 @@ pipeline {
 
     }
     post {
-
         failure {
             emailext to: "cjasser40@gmail.com",
                     subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
                     body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
-                    attachLog: true
+                    attachLog: true,
+                    compressLog: true,
+                    recipientProviders: [buildUser(), developers(), brokenTestsSuspects(), brokenBuildSuspects()]
         }
 
     }
