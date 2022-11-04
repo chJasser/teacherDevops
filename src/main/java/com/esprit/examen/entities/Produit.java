@@ -3,14 +3,8 @@ package com.esprit.examen.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,7 +35,7 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private Stock stock;
-	@OneToMany(mappedBy = "produit")
+	@OneToMany(mappedBy = "produit" ,cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private Set<DetailFacture> detailFacture;
 	@ManyToOne

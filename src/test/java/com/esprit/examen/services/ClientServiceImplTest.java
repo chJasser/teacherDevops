@@ -1,4 +1,5 @@
-/*package com.esprit.examen.services;
+/*
+package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
 
@@ -27,7 +28,7 @@ public class ClientServiceImplTest {
 	@Autowired
 	IClientService clientService;
 
-	
+
 	@Test
 	public void testAddClient() throws ParseException {
 
